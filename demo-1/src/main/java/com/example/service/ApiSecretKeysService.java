@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,8 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ApiSecretKeysService {
     private final ApiSecretKeysMapper apiSecretKeysMapper;
-    
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @Transactional(readOnly = true)
     public ApiSecretKeys findByClientId(String clientId) {
     	return apiSecretKeysMapper.findByClientId(clientId);
@@ -34,4 +36,11 @@ public class ApiSecretKeysService {
     	
     	apiSecretKeysMapper.updateRefreshToken(param);
     }
+    
+	public boolean isMatch(String clientId, String clientSecret) {
+		ApiSecretKeys apiSecretKeys = findByClientId(clientId);
+		String storedSecret = apiSecretKeys.getClientSecret();
+		boolean isMatch = encoder.matches(clientSecret, storedSecret);
+		return isMatch;
+	}
 }

@@ -156,7 +156,7 @@ public class AuthController {
 		String clientId = loginSystemDto.getClientId();
 		String clientSecret = loginSystemDto.getClientSecret();
 		// 1. 클라이언트 검증
-		if (apiSecretKeysService.totalCount(clientId, clientSecret) < 1) {
+		if (!apiSecretKeysService.isMatch(clientId, clientSecret)) {
 			String message = "Invalid client credentials";
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponse.error(message));
 		}
