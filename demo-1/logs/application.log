@@ -1,0 +1,150 @@
+2025-07-18 13:11:56.563 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-18 13:11:56.594 [Test worker] INFO  c.e.service.BoardLikeServiceTest - Starting BoardLikeServiceTest using Java 17.0.3 with PID 32076 (started by lshan in C:\work\new_source\demo-1)
+2025-07-18 13:11:56.594 [Test worker] DEBUG c.e.service.BoardLikeServiceTest - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-07-18 13:11:56.595 [Test worker] INFO  c.e.service.BoardLikeServiceTest - No active profile set, falling back to 1 default profile: "default"
+2025-07-18 13:11:57.524 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-18 13:11:57.667 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1231a1be
+2025-07-18 13:11:57.668 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-18 13:11:58.417 [Test worker] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-18 13:11:58.630 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+2025-07-18 13:11:58.632 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+2025-07-18 13:11:59.207 [Test worker] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+2025-07-18 13:11:59.210 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Freed 0 triggers from 'acquired' / 'blocked' state.
+2025-07-18 13:11:59.213 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2025-07-18 13:11:59.213 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovery complete.
+2025-07-18 13:11:59.213 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 'complete' triggers.
+2025-07-18 13:11:59.214 [Test worker] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 stale fired job entries.
+2025-07-18 13:11:59.225 [Test worker] INFO  c.e.service.BoardLikeServiceTest - Started BoardLikeServiceTest in 2.886 seconds (process running for 3.767)
+2025-07-18 13:11:59.240 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:11:59.246 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-18 13:11:59.260 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:11:59.261 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:11:59.261 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: admin123(String)
+2025-07-18 13:11:59.262 [Test worker] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:11:59.664 [Test worker] DEBUG c.e.m.BoardLikeMapper.hasUserLiked - ==>  Preparing: SELECT COUNT(*) > 0 FROM board_like WHERE board_id = ? AND user_id = ?
+2025-07-18 13:11:59.664 [Test worker] DEBUG c.e.m.BoardLikeMapper.hasUserLiked - ==> Parameters: 4(Long), 2(Long)
+2025-07-18 13:11:59.671 [Test worker] DEBUG c.e.m.BoardLikeMapper.hasUserLiked - <==      Total: 1
+2025-07-18 13:11:59.684 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.service.BoardServiceTest]: BoardServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-18 13:11:59.687 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.ExampleApplication for test class com.example.service.BoardServiceTest
+2025-07-18 13:11:59.692 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardList - ==>  Preparing: SELECT * FROM board ORDER BY created_at DESC LIMIT ? OFFSET ?
+2025-07-18 13:11:59.693 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardList - ==> Parameters: 10(Integer), 0(Integer)
+2025-07-18 13:11:59.702 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardList - <==      Total: 3
+2025-07-18 13:11:59.703 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==>  Preparing: SELECT * FROM comment WHERE board_id = ? ORDER BY created_at ASC
+2025-07-18 13:11:59.703 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==> Parameters: 6(Long)
+2025-07-18 13:11:59.709 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - <==      Total: 0
+2025-07-18 13:11:59.710 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==>  Preparing: SELECT * FROM attachment WHERE board_id = ?
+2025-07-18 13:11:59.710 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==> Parameters: 6(Long)
+2025-07-18 13:11:59.716 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - <==      Total: 1
+2025-07-18 13:11:59.720 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==>  Preparing: SELECT * FROM comment WHERE board_id = ? ORDER BY created_at ASC
+2025-07-18 13:11:59.720 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==> Parameters: 5(Long)
+2025-07-18 13:11:59.721 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - <==      Total: 0
+2025-07-18 13:11:59.721 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==>  Preparing: SELECT * FROM attachment WHERE board_id = ?
+2025-07-18 13:11:59.721 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==> Parameters: 5(Long)
+2025-07-18 13:11:59.722 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - <==      Total: 1
+2025-07-18 13:11:59.723 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==>  Preparing: SELECT * FROM comment WHERE board_id = ? ORDER BY created_at ASC
+2025-07-18 13:11:59.723 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - ==> Parameters: 4(Long)
+2025-07-18 13:11:59.723 [Test worker] DEBUG c.e.m.C.selectCommentsByBoardId - <==      Total: 3
+2025-07-18 13:11:59.724 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==>  Preparing: SELECT * FROM attachment WHERE board_id = ?
+2025-07-18 13:11:59.724 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - ==> Parameters: 4(Long)
+2025-07-18 13:11:59.724 [Test worker] DEBUG c.e.m.A.selectAttachmentsByBoardId - <==      Total: 1
+2025-07-18 13:11:59.730 [Test worker] DEBUG c.e.mapper.BoardMapper.insertBoard - ==>  Preparing: INSERT INTO board (title, content, writer, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW())
+2025-07-18 13:11:59.731 [Test worker] DEBUG c.e.mapper.BoardMapper.insertBoard - ==> Parameters: 테스트 제목입니다.(String), 냉무(String), 1(Long)
+2025-07-18 13:11:59.732 [Test worker] DEBUG c.e.mapper.BoardMapper.insertBoard - <==    Updates: 1
+2025-07-18 13:11:59.736 [Test worker] DEBUG c.e.m.A.insertAttachment - ==>  Preparing: INSERT INTO attachment (board_id, original_name, saved_name, file_path, file_size, uploaded_at) VALUES (?, ?, ?, ?, ?, NOW())
+2025-07-18 13:11:59.736 [Test worker] DEBUG c.e.m.A.insertAttachment - ==> Parameters: 7(Long), test.txt(String), 65484cd2-faff-41bf-97a5-ef2f3d8fa015_test.txt(String), C:\upload\files\65484cd2-faff-41bf-97a5-ef2f3d8fa015_test.txt(String), 33(Long)
+2025-07-18 13:11:59.737 [Test worker] DEBUG c.e.m.A.insertAttachment - <==    Updates: 1
+2025-07-18 13:11:59.742 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardById - ==>  Preparing: SELECT * FROM board WHERE id = ?
+2025-07-18 13:11:59.742 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardById - ==> Parameters: 4(Long)
+2025-07-18 13:11:59.743 [Test worker] DEBUG c.e.m.BoardMapper.selectBoardById - <==      Total: 1
+2025-07-18 13:11:59.746 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.service.CommentServiceTest]: CommentServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-18 13:11:59.747 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.ExampleApplication for test class com.example.service.CommentServiceTest
+2025-07-18 13:11:59.750 [Test worker] DEBUG c.e.m.CommentMapper.insertComment - ==>  Preparing: INSERT INTO comment (board_id, writer, content, created_at) VALUES (?, ?, ?, NOW())
+2025-07-18 13:11:59.751 [Test worker] DEBUG c.e.m.CommentMapper.insertComment - ==> Parameters: 4(Long), 2(Long), 댓글 입니다.3(String)
+2025-07-18 13:11:59.751 [Test worker] DEBUG c.e.m.CommentMapper.insertComment - <==    Updates: 1
+2025-07-18 13:11:59.757 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-18 13:11:59.758 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.ExampleApplication for test class com.example.service.UserServiceTest
+2025-07-18 13:11:59.814 [Test worker] DEBUG c.e.mapper.UserMapper.insertUser - ==>  Preparing: INSERT INTO users(user_id, password, user_name, created_at) VALUES(?, ?, ?, now())
+2025-07-18 13:11:59.815 [Test worker] DEBUG c.e.mapper.UserMapper.insertUser - ==> Parameters: null, $2a$10$cC5OJqzOFF3Ce6kzxb5GCOHkXSTx2W/f3gQ2JwtvFp8F1GPD0sZyC(String), testUser1(String)
+2025-07-18 13:11:59.815 [Test worker] DEBUG c.e.mapper.UserMapper.insertUser - <==    Updates: 1
+2025-07-18 13:11:59.816 [Test worker] DEBUG c.e.mapper.RoleMapper.getRoleId - ==>  Preparing: SELECT id FROM roles WHERE name = ?
+2025-07-18 13:11:59.816 [Test worker] DEBUG c.e.mapper.RoleMapper.getRoleId - ==> Parameters: ROLE_USER(String)
+2025-07-18 13:11:59.823 [Test worker] DEBUG c.e.mapper.RoleMapper.getRoleId - <==      Total: 1
+2025-07-18 13:11:59.824 [Test worker] DEBUG c.e.m.RoleMapper.insertUserRoles - ==>  Preparing: INSERT INTO user_roles(users_id, role_id) VALUES(?, ?)
+2025-07-18 13:11:59.824 [Test worker] DEBUG c.e.m.RoleMapper.insertUserRoles - ==> Parameters: 45(Long), 2(Integer)
+2025-07-18 13:11:59.829 [Test worker] DEBUG c.e.m.RoleMapper.insertUserRoles - <==    Updates: 1
+2025-07-18 13:11:59.836 [SpringApplicationShutdownHook] INFO  o.s.s.quartz.SchedulerFactoryBean - Shutting down Quartz Scheduler
+2025-07-18 13:11:59.838 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-18 13:11:59.840 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-18 13:13:03.724 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-18 13:13:03.750 [main] INFO  com.example.ExampleApplication - Starting ExampleApplication using Java 17.0.3 with PID 26064 (C:\work\new_source\demo-1\build\classes\java\main started by lshan in C:\work\new_source\demo-1)
+2025-07-18 13:13:03.750 [main] DEBUG com.example.ExampleApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-07-18 13:13:03.750 [main] INFO  com.example.ExampleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-18 13:13:04.588 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-18 13:13:04.596 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-18 13:13:04.598 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-18 13:13:04.598 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-07-18 13:13:04.645 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-18 13:13:04.646 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 875 ms
+2025-07-18 13:13:04.683 [main] DEBUG c.e.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-07-18 13:13:04.723 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-18 13:13:04.824 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c448ef
+2025-07-18 13:13:04.825 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-18 13:13:05.536 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-18 13:13:05.636 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+2025-07-18 13:13:05.637 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+2025-07-18 13:13:05.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-18 13:13:05.909 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-18 13:13:05.910 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+2025-07-18 13:13:05.912 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Freed 0 triggers from 'acquired' / 'blocked' state.
+2025-07-18 13:13:05.917 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2025-07-18 13:13:05.918 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovery complete.
+2025-07-18 13:13:05.918 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 'complete' triggers.
+2025-07-18 13:13:05.918 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 stale fired job entries.
+2025-07-18 13:13:05.924 [main] INFO  com.example.ExampleApplication - Started ExampleApplication in 2.456 seconds (process running for 2.679)
+2025-07-18 13:13:05.934 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:13:05.939 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-18 13:13:05.945 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:13:05.945 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:13:05.946 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: admin123(String)
+2025-07-18 13:13:05.946 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:13:14.720 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-18 13:13:14.720 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-18 13:13:14.721 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-18 13:13:15.157 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 152 ms
+2025-07-18 13:15:00.010 [schedulerFactoryBean_Worker-1] INFO  com.example.job.ClusteredJob - ⚙️ ClusteredJob 실행 - 2025-07-18T13:15:00.010406300
+2025-07-18 13:24:29.248 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-18 13:24:29.275 [main] INFO  com.example.ExampleApplication - Starting ExampleApplication using Java 17.0.3 with PID 17192 (C:\work\new_source\demo-1\build\classes\java\main started by lshan in C:\work\new_source\demo-1)
+2025-07-18 13:24:29.275 [main] DEBUG com.example.ExampleApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-07-18 13:24:29.275 [main] INFO  com.example.ExampleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-18 13:24:30.133 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-18 13:24:30.140 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-18 13:24:30.141 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-18 13:24:30.141 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-07-18 13:24:30.175 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-18 13:24:30.175 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 878 ms
+2025-07-18 13:24:30.202 [main] DEBUG c.e.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-07-18 13:24:30.235 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-18 13:24:30.315 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c448ef
+2025-07-18 13:24:30.316 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-18 13:24:30.932 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-18 13:24:31.035 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+2025-07-18 13:24:31.036 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+2025-07-18 13:24:31.298 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-18 13:24:31.308 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-18 13:24:31.309 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+2025-07-18 13:24:31.310 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Freed 0 triggers from 'acquired' / 'blocked' state.
+2025-07-18 13:24:31.312 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2025-07-18 13:24:31.312 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovery complete.
+2025-07-18 13:24:31.312 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 'complete' triggers.
+2025-07-18 13:24:31.312 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 stale fired job entries.
+2025-07-18 13:24:31.322 [main] INFO  com.example.ExampleApplication - Started ExampleApplication in 2.335 seconds (process running for 2.539)
+2025-07-18 13:24:31.332 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:24:31.337 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-18 13:24:31.344 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:24:31.344 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-18 13:24:31.345 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: admin123(String)
+2025-07-18 13:24:31.345 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-18 13:24:33.857 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-18 13:24:33.857 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-18 13:24:33.858 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-18 13:24:34.240 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 198 ms

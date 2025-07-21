@@ -1,0 +1,97 @@
+2025-07-11 09:42:52.999 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-11 09:42:53.043 [main] INFO  com.example.ExampleApplication - Starting ExampleApplication using Java 17.0.3 with PID 34068 (C:\work\new_source\demo-1\bin\main started by lshan in C:\work\new_source\demo-1)
+2025-07-11 09:42:53.043 [main] DEBUG com.example.ExampleApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-07-11 09:42:53.044 [main] INFO  com.example.ExampleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 09:42:54.096 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 09:42:54.105 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:42:54.106 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 09:42:54.107 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-07-11 09:42:54.151 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 09:42:54.152 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1081 ms
+2025-07-11 09:42:54.197 [main] DEBUG c.e.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-07-11 09:42:54.256 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-11 09:42:54.436 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48499739
+2025-07-11 09:42:54.437 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-11 09:42:55.175 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-11 09:42:55.383 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+2025-07-11 09:42:55.384 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+2025-07-11 09:42:55.908 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:42:55.926 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 09:42:55.927 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+2025-07-11 09:42:55.929 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Freed 0 triggers from 'acquired' / 'blocked' state.
+2025-07-11 09:42:55.931 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2025-07-11 09:42:55.931 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovery complete.
+2025-07-11 09:42:55.932 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 'complete' triggers.
+2025-07-11 09:42:55.932 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 stale fired job entries.
+2025-07-11 09:42:55.940 [main] INFO  com.example.ExampleApplication - Started ExampleApplication in 3.25 seconds (process running for 3.476)
+2025-07-11 09:42:55.957 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:42:55.966 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-11 09:42:55.979 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:42:55.980 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:42:55.981 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: admin123(String)
+2025-07-11 09:42:55.982 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:43:01.425 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-11 09:43:01.425 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-11 09:43:01.426 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-11 09:43:01.824 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 191 ms
+2025-07-11 09:45:00.017 [schedulerFactoryBean_Worker-1] INFO  com.example.job.ClusteredJob - ⚙️ ClusteredJob 실행 - 2025-07-11T09:45:00.017396600
+2025-07-11 09:45:07.319 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-07-11 09:45:07.348 [main] INFO  com.example.ExampleApplication - Starting ExampleApplication using Java 17.0.3 with PID 13336 (C:\work\new_source\demo-1\bin\main started by lshan in C:\work\new_source\demo-1)
+2025-07-11 09:45:07.348 [main] DEBUG com.example.ExampleApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-07-11 09:45:07.349 [main] INFO  com.example.ExampleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 09:45:08.046 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 09:45:08.052 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:45:08.054 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 09:45:08.054 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-07-11 09:45:08.088 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 09:45:08.088 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 719 ms
+2025-07-11 09:45:08.119 [main] DEBUG c.e.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-07-11 09:45:08.152 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-11 09:45:08.237 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@714e861f
+2025-07-11 09:45:08.238 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-11 09:45:08.848 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-11 09:45:08.953 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+2025-07-11 09:45:08.953 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+2025-07-11 09:45:09.238 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:45:09.247 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 09:45:09.248 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+2025-07-11 09:45:09.250 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Freed 0 triggers from 'acquired' / 'blocked' state.
+2025-07-11 09:45:09.251 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2025-07-11 09:45:09.251 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Recovery complete.
+2025-07-11 09:45:09.252 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 'complete' triggers.
+2025-07-11 09:45:09.252 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Removed 0 stale fired job entries.
+2025-07-11 09:45:09.257 [main] INFO  com.example.ExampleApplication - Started ExampleApplication in 2.157 seconds (process running for 2.484)
+2025-07-11 09:45:09.267 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:45:09.272 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-11 09:45:09.279 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:45:09.279 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:45:09.280 [main] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: admin123(String)
+2025-07-11 09:45:09.280 [main] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:45:14.951 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-11 09:45:14.952 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-11 09:45:14.953 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-07-11 09:45:15.242 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 151 ms
+2025-07-11 09:45:31.429 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:45:31.430 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-11 09:45:31.430 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:45:31.431 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - ==>  Preparing: SELECT r.name FROM roles r JOIN user_roles ur ON ur.role_id = r.id LEFT JOIN users u on u.id = ur.users_id WHERE u.user_id = ?
+2025-07-11 09:45:31.431 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - ==> Parameters: user123(String)
+2025-07-11 09:45:31.432 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - <==      Total: 1
+2025-07-11 09:45:31.492 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - ==>  Preparing: SELECT id , user_id , password , user_name , refresh_token FROM users WHERE user_id = ?
+2025-07-11 09:45:31.493 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - ==> Parameters: user123(String)
+2025-07-11 09:45:31.493 [http-nio-8080-exec-10] DEBUG c.e.mapper.UserMapper.findByUserId - <==      Total: 1
+2025-07-11 09:45:31.494 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - ==>  Preparing: SELECT r.name FROM roles r JOIN user_roles ur ON ur.role_id = r.id LEFT JOIN users u on u.id = ur.users_id WHERE u.user_id = ?
+2025-07-11 09:45:31.494 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - ==> Parameters: user123(String)
+2025-07-11 09:45:31.494 [http-nio-8080-exec-10] DEBUG c.e.m.RoleMapper.getRolesByUserId - <==      Total: 1
+2025-07-11 09:45:31.507 [http-nio-8080-exec-10] DEBUG c.e.m.UserMapper.updateRefreshToken - ==>  Preparing: UPDATE users SET updated_at = now() , refresh_token = ? WHERE user_id = ?
+2025-07-11 09:45:31.507 [http-nio-8080-exec-10] DEBUG c.e.m.UserMapper.updateRefreshToken - ==> Parameters: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMTIzIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTc1MjE5NDczMSwiZXhwIjoxNzUyNzk5NTMxfQ.ux9FxXt49lHxpe2ehL29IN2fwZ3yTfxV3lAi4numCGs(String), user123(String)
+2025-07-11 09:45:31.507 [http-nio-8080-exec-10] DEBUG c.e.m.UserMapper.updateRefreshToken - <==    Updates: 1
+2025-07-11 09:50:00.017 [schedulerFactoryBean_Worker-1] INFO  com.example.job.ClusteredJob - ⚙️ ClusteredJob 실행 - 2025-07-11T09:50:00.017820900
+2025-07-11 09:54:14.474 [RMI TCP Connection(11)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-07-11 09:54:14.477 [RMI TCP Connection(11)-127.0.0.1] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 09:54:14.477 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:54:14.886 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 09:54:14.887 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-07-11 09:54:14.889 [RMI TCP Connection(11)-127.0.0.1] INFO  o.s.s.quartz.SchedulerFactoryBean - Shutting down Quartz Scheduler
+2025-07-11 09:54:14.890 [RMI TCP Connection(11)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-11 09:54:14.903 [RMI TCP Connection(11)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

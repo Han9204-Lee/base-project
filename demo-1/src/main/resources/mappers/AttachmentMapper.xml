@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.AttachmentMapper">
+	<insert id="insertAttachment" parameterType="com.example.entity.Attachment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO attachment (board_id, original_name, saved_name, file_path, file_size, uploaded_at)
+        VALUES (#{boardId}, #{originalName}, #{savedName}, #{filePath}, #{fileSize}, NOW())
+    </insert>
+
+    <select id="selectAttachmentsByBoardId" parameterType="long" resultType="com.example.entity.Attachment">
+        SELECT 
+        	* 
+        FROM attachment 
+        WHERE board_id = #{boardId}
+    </select>
+
+    <select id="findByAttachmentId" parameterType="long" resultType="com.example.entity.Attachment">
+        SELECT 
+        	* 
+        FROM attachment 
+        WHERE id = #{id}
+        AND board_id = #{boardId}
+    </select>
+    
+    <delete id="deleteAttachment" parameterType="long">
+        DELETE FROM attachment 
+        WHERE id = #{id}
+    </delete>
+</mapper>

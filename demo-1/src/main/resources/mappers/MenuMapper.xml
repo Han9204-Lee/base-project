@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.MenuMapper">
+	<select id="getUrisByRoles" resultType="string">
+	    SELECT 
+	    	DISTINCT m.uri
+	    FROM menus m
+	    JOIN role_menus rm ON m.id = rm.menu_id
+	    JOIN roles r ON rm.role_id = r.id
+	    WHERE r.name IN
+	    <foreach collection="roles" item="role" open="(" separator="," close=")">
+	        #{role}
+	    </foreach>
+	</select>
+</mapper>
