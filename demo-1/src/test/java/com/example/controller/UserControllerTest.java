@@ -44,5 +44,7 @@ class UserControllerTest {
         		) // URL 호출
                .andExpect(status().isOk()) // 200 OK 확인
                .andExpect(jsonPath("$.data.userId").value("admin123")); // JSON 응답 검증
+        
+        //테스트
     }
 }
