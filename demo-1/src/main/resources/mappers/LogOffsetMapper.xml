@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.LogOffsetMapper">
+
+	<select id="findByFileName" parameterType="string" resultType="com.example.entity.LogOffset">
+		SELECT 
+			file_name
+			, position
+			, last_modified 
+		FROM log_offset
+		WHERE file_name = #{fileName}
+    </select>
+
+	<insert id="insertLogOffset" parameterType="com.example.entity.LogOffset" useGeneratedKeys="true" keyProperty="id">
+   		INSERT INTO log_offset
+   		(file_name, position, last_modified) 
+		VALUES 
+		(#{fileName}, #{position}, #{lastModified})
+    </insert>
+    
+	<update id="updateLogOffset" parameterType="com.example.entity.LogOffset">
+        UPDATE log_offset SET
+        	position = #{position}
+        	, last_modified = #{lastModified}
+        	, updated_at=NOW()
+        WHERE file_name = #{fileName}
+    </update>
+
+	<insert id="insertLog" parameterType="com.example.entity.SwgLogs" useGeneratedKeys="true" keyProperty="id">
+   		INSERT INTO swg_logs 
+		(log_time, level, message) 
+		VALUES 
+		(#{logTime}, #{level}, #{message})
+    </insert>
+</mapper>

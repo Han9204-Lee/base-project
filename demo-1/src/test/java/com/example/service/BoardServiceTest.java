@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.entity.Attachment;
 import com.example.entity.Board;
 import com.example.entity.Comment;
+import com.example.enums.PostType;
 
 @SpringBootTest
 public class BoardServiceTest {
@@ -65,6 +66,7 @@ public class BoardServiceTest {
     	board.setTitle("테스트 제목입니다.");
     	board.setContent("냉무");
     	board.setWriter(1L);
+    	board.setPostType(PostType.QNA);
     	
         boardService.createBoard(board, files);
     }
