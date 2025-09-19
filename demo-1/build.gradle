@@ -10,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 repositories {
@@ -29,15 +29,15 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     
-    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    implementation 'org.mapstruct:mapstruct:1.6.2'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.2'
     
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 처리
     
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'com.mysql:mysql-connector-j'
     //쿼츠
     implementation 'org.springframework.boot:spring-boot-starter-quartz'
     implementation 'org.quartz-scheduler:quartz:2.5.0'
@@ -60,4 +60,18 @@ tasks.withType(JavaCompile) {
 }
 bootJar {
     archiveFileName = 'test.jar' // 원하는 파일명
+}
+
+// Ensure Gradle uses Java 21 to run JavaExec and Test tasks even if the system default JDK is older
+// This helps avoid UnsupportedClassVersionError when running with gradlew bootRun or gradlew test
+tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(Test).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }

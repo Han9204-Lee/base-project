@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.entity.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,7 +64,7 @@ public class AuthController {
 		String refreshToken = jwtUtil.generateRefreshToken(userId, user.getRoles());
 
 		// DB에 리프레시 토큰 저장
-		userService.updateRefreshToken(user.getUserId(), refreshToken);
+		userService.updateRefreshToken(user.getLoginId(), refreshToken);
 
 		Map<String, Object> token = new HashMap<>();
 		token.put("accessToken", accessToken);
@@ -116,7 +117,7 @@ public class AuthController {
 	    if (client == null || !refreshToken.equals(client.getRefreshToken())) {
 	        return null;
 	    }
-	    return jwtUtil.generateAccessToken(clientId, List.of("ROLE_API_CLIENT"));
+	    return jwtUtil.generateAccessToken(clientId, List.of(new Roles("ROLE_API_CLIENT")));
 	}
 
 	private String handleUserRefresh(String userId, String refreshToken) {
@@ -124,7 +125,7 @@ public class AuthController {
 	    if (user == null || !refreshToken.equals(user.getRefreshToken())) {
 	        return null;
 	    }
-	    return jwtUtil.generateAccessToken(userId, List.of("ROLE_USER"));
+	    return jwtUtil.generateAccessToken(userId, List.of(new Roles("ROLE_USER")));
 	}
 
 	@PostMapping("/logout")
@@ -162,8 +163,8 @@ public class AuthController {
 		}
 
 		// 2. 토큰 생성
-		String accessToken = jwtUtil.generateAccessToken(clientId, List.of("ROLE_API_CLIENT"));
-		String refreshToken = jwtUtil.generateRefreshToken(clientId, List.of("ROLE_API_CLIENT"));
+		String accessToken = jwtUtil.generateAccessToken(clientId, List.of(new Roles("ROLE_API_CLIENT")));
+		String refreshToken = jwtUtil.generateRefreshToken(clientId, List.of(new Roles("ROLE_API_CLIENT")));
 
 		// DB에 리프레시 토큰 저장
 		apiSecretKeysService.updateRefreshToken(clientId, refreshToken);

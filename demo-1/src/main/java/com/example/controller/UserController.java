@@ -65,9 +65,9 @@ public class UserController {
 		, security = { @SecurityRequirement(name = "bearerAuth") }
 	)
 	public ResponseEntity<ApiResponse<User>> createUser(@RequestBody User userInfo) {
-		userService.createUser(userInfo, userInfo.getRoles());
+		userService.createUser(userInfo);
 		
-		String userId = userInfo.getUserId();
+		String userId = userInfo.getLoginId();
 		User user = userService.findByUserId(userId);
 		
 		String message = "Success";
@@ -81,7 +81,7 @@ public class UserController {
 		, security = { @SecurityRequirement(name = "bearerAuth") }
 	)
 	public ResponseEntity<ApiResponse<User>> updateUser(@PathVariable("userId") String userId, @RequestBody User userInfo) {
-		userInfo.setUserId(userId);
+		userInfo.setLoginId(userId);
 		User user = userService.updateUser(userInfo);
 
 		String message = "Success";

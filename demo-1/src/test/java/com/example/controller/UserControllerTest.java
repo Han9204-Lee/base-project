@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Arrays;
 import java.util.List;
 
+import com.example.entity.Roles;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ class UserControllerTest {
     	
         // 테스트 JWT 토큰 생성
     	String userId = "admin123";
-    	List<String> userRoles = Arrays.asList("ROLE_ADMIN");
+    	List<Roles> userRoles = List.of(new Roles("ROLE_ADMIN"));
         jwtToken = jwtUtil.generateAccessToken(userId, userRoles);
     }
     

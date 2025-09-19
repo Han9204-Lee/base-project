@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.entity.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
@@ -29,7 +30,7 @@ public class MenuPermissionService {
 			return true;
 		}
 
-		List<String> roles = roleMapper.getRolesByUserId(userId); // 예: [ROLE_ADMIN, ROLE_USER]
+		List<Roles> roles = roleMapper.getRolesByLoginId(userId); // 예: [ROLE_ADMIN, ROLE_USER]
 
 		if (roles.isEmpty()) {
 			return false;

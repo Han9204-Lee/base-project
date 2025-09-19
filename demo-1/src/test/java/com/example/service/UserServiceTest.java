@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.entity.Roles;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,10 +22,10 @@ public class UserServiceTest {
         user.setPassword("test1234");
 
         try {
-        	List<String> roles = List.of("ROLE_USER");
+        	List<Roles> roles = List.of(new Roles("ROLE_USER"));
         	user.setRoles(roles);
         	
-            userService.createUser(user, user.getRoles());
+            userService.createUser(user);
         } catch (Exception e) {
             System.out.println("예외 발생 확인 → 롤백 기대됨");
         }

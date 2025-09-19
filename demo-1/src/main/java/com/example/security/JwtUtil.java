@@ -1,5 +1,6 @@
 package com.example.security;
 
+import com.example.entity.Roles;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -19,9 +20,12 @@ public class JwtUtil {
 	private static final String TOKEN_PREFIX = "Bearer ";
 	
     // Access Token 생성 (with roles)
-    public String generateAccessToken(String userId, List<String> roles) {
+    public String generateAccessToken(String userId, List<Roles> roles) {
         Claims claims = Jwts.claims().setSubject(userId);
-        claims.put("roles", roles);
+        List<String> roleNames = roles.stream()
+                .map(Roles::getName)
+                .toList();
+        claims.put("roles", roleNames);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -32,9 +36,12 @@ public class JwtUtil {
     }
 
     // Refresh Token 생성 (claims 없이)
-    public String generateRefreshToken(String userId, List<String> roles) {
+    public String generateRefreshToken(String userId, List<Roles> roles) {
     	Claims claims = Jwts.claims().setSubject(userId);
-        claims.put("roles", roles);
+        List<String> roleNames = roles.stream()
+                .map(Roles::getName)
+                .toList();
+        claims.put("roles", roleNames);
         
         return Jwts.builder()
         		.setClaims(claims)

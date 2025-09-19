@@ -7,7 +7,7 @@
 	    	r.name
 	    FROM roles r
 	    JOIN user_roles ur ON ur.role_id = r.id
-	    LEFT JOIN users u on u.id = ur.users_id
+	    LEFT JOIN users u on u.id = ur.user_id
 	    WHERE u.user_id = #{userId}
 	</select>
 	
@@ -19,6 +19,6 @@
 	</select>
 	
     <insert id="insertUserRoles" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO user_roles(users_id, role_id) VALUES(#{usersId}, #{roleId})
+        INSERT INTO user_roles(user_id, role_id) VALUES(#{userId}, #{roleId})
     </insert>
 </mapper>

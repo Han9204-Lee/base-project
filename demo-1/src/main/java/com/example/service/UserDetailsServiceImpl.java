@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.entity.Roles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,20 +25,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private final RoleMapper roleMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-    	User user = userMapper.findByUserId(userId);
+    public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
+    	User user = userMapper.findByLoginId(loginId);
 		if (user == null) {
-			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다: " + userId);
+			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다: " + loginId);
 		}
 
-        List<String> roles = roleMapper.getRolesByUserId(userId); // ex: ["ROLE_USER", "ROLE_ADMIN"]
+        List<Roles> roles = roleMapper.getRolesByLoginId(loginId); // ex: ["ROLE_USER", "ROLE_ADMIN"]
 
-        List<GrantedAuthority> authorities = new ArrayList<>(roles.stream()
-        		.map(role -> new SimpleGrantedAuthority(role))
-        	    .toList());
+        // Extract only the role names from Roles objects
+        List<String> roleNames = roles.stream()
+                .map(Roles::getName)
+                .toList();
+
+        // Convert role names to GrantedAuthority list
+        List<GrantedAuthority> authorities = new ArrayList<>(roleNames.stream()
+                .map(SimpleGrantedAuthority::new)
+                .toList());
         
         return new org.springframework.security.core.userdetails.User(
-                user.getUserId(),
+                user.getLoginId(),
                 user.getPassword(),
                 authorities
             );

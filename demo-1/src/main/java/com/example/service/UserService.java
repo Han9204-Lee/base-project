@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.entity.Roles;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,16 +34,16 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-	public User findByUserId(String userId) {
-		User user = userMapper.findByUserId(userId);
+	public User findByUserId(String loginId) {
+		User user = userMapper.findByLoginId(loginId);
 
-		List<String> roles = roleMapper.getRolesByUserId(userId);
+		List<Roles> roles = roleMapper.getRolesByLoginId(loginId);
 		user.setRoles(roles);
 
 		return user;
 	}
     
-	public void createUser(User user, List<String> roles) {
+	public void createUser(User user) {
 		if (!user.getPassword().isEmpty()) {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 		}
@@ -50,8 +51,8 @@ public class UserService {
 		userMapper.insertUser(user);
 		
 		Long usersId = user.getId();
-		for (String role : roles) {
-			int roleId = roleMapper.getRoleId(role);
+		for (Roles role : user.getRoles()) {
+			int roleId = roleMapper.getRoleId(role.getName());
 			Map<String, Object> param = new HashMap<String, Object>();
 			param.put("usersId", usersId);
 			param.put("roleId", roleId);
@@ -60,8 +61,8 @@ public class UserService {
 	}
 
     public User updateUser(User user) {
-    	String userId = user.getUserId();
-        User existing = userMapper.findByUserId(userId);
+    	String userId = user.getLoginId();
+        User existing = userMapper.findByLoginId(userId);
 		if (existing != null) {
 			existing.setUserName(user.getUserName());
 			
@@ -91,7 +92,7 @@ public class UserService {
 			List<User> userList = new ArrayList<User>();
 			for (int i = 1; i <= 10_000; i++) {
 				User user = new User();
-				user.setUserId("users" + i);
+				user.setLoginId("users" + i);
 				user.setPassword("pass" + i);
 				user.setUserName("users" + i + "@mail.com");
 				userList.add(user);

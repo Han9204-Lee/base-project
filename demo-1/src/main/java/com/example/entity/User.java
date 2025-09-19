@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity{
     private Long id;
-    private String userId;
+    private String loginId;
     private String password;
     private String userName;
-    private List<String> roles;
+    private List<Roles> roles;
     private String refreshToken;
 }

@@ -26,75 +26,44 @@ import lombok.RequiredArgsConstructor;
 public class LogCopyService {
 	private static final Logger logger = LoggerFactory.getLogger(LogCopyService.class);
 	private static final String LOG_FILE = "C:/work/application.log";
-//	Charset charset = StandardCharsets.UTF_8;
     private final LogOffsetMapper logOffsetMapper;
     private RandomAccessFile raf;
     
-//    public void runClusterTask() {
-//    	try {
-//            File logFile = new File(LOG_FILE);
-//            LogOffset offset = loadOffsetFromDB(LOG_FILE);
-//
-//            // 로테이션 감지
-//            /*if (logFile.length() < offset.getPosition() && logFile.lastModified() != offset.getLastModified()) {
-//                offset.setPosition(0);
-//            }*/
-//
-//            try (RandomAccessFile raf = new RandomAccessFile(logFile, "r")) {
-//                raf.seek(offset.getPosition());
-//
-//                String line;
-//                while ((line = raf.readLine()) != null) {
-//                    saveLogLine(new String(line.getBytes(), charset));
-//                }
-//
-//                // 위치 업데이트
-//                offset.setPosition(raf.getFilePointer());
-//                offset.setLastModified(logFile.lastModified());
-//                saveOffsetToDB(LOG_FILE, offset);
-//            }
-//
-//            logger.info("[Quartz] 로그 읽기 완료");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            logger.error(e.getLocalizedMessage());
-//        }
-//    }
-    
     public void runClusterTask() {
-		try {
-			File logFile = new File(LOG_FILE);
-			LogOffset offset = loadOffsetFromDB(LOG_FILE);
+        try {
+            File logFile = new File(LOG_FILE);
+            LogOffset offset = loadOffsetFromDB(LOG_FILE);
 
-			LogTailReader(LOG_FILE);
-			raf.seek(offset.getPosition()+1); // 마지막 읽은 위치로 이동
+            LogTailReader(LOG_FILE);
+            // 저장된 위치부터 읽기 (마지막으로 완료된 줄 다음 위치)
+            raf.seek(offset.getPosition());
 
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			int b;
-			while ((b = raf.read()) != -1) {
-				if (b == '\n') {
-					String line = baos.toString(StandardCharsets.UTF_8);
-					saveLogLine(line.trim());
-					baos.reset();
-				} else {
-					baos.write(b);
-				}
-			}
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int b;
+            long lastCompleteLinePointer = offset.getPosition();
+            while ((b = raf.read()) != -1) {
+                if (b == '\n') {
+                    String line = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+                    saveLogLine(line.trim());
+                    baos.reset();
+                    // '\n' 까지 읽은 다음 위치를 저장 (완료된 라인의 끝)
+                    lastCompleteLinePointer = raf.getFilePointer();
+                } else {
+                    baos.write(b);
+                }
+            }
 
-			// 마지막 줄 처리 (줄바꿈 없이 끝났을 경우)
-			if (baos.size() > 0) {
-				String line = baos.toString(StandardCharsets.UTF_8);
-				saveLogLine(line.trim());
-				//raf.seek(raf.getFilePointer() - baos.size());
-			}
-
-			offset.setPosition(raf.getFilePointer());
-			offset.setLastModified(logFile.lastModified());
-			saveOffsetToDB(LOG_FILE, offset);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getLocalizedMessage());
-		}
+            // 마지막에 줄바꿈이 없는 미완성 라인은 저장/처리하지 않음
+            // 다음 실행 때 이어서 읽을 수 있도록 오프셋을 마지막 완료 지점으로 설정
+            offset.setPosition(lastCompleteLinePointer);
+            offset.setLastModified(logFile.lastModified());
+            saveOffsetToDB(LOG_FILE, offset);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getLocalizedMessage());
+        } finally {
+            try { if (raf != null) raf.close(); } catch (IOException ignore) {}
+        }
     }
     
     public void LogTailReader(String filePath) throws IOException {

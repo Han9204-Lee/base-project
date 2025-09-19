@@ -3,33 +3,33 @@
 
 <mapper namespace="com.example.mapper.UserMapper">
 
-	<select id="findByUserId" parameterType="string" resultType="com.example.entity.User">
+	<select id="findByLoginId" parameterType="string" resultType="com.example.entity.User">
         SELECT 
         	id
-        	, user_id
+        	, login_id
         	, password
         	, user_name
         	, refresh_token
         FROM users 
-        WHERE user_id = #{userId}
+        WHERE login_id = #{loginId}
     </select>
 
 	<insert id="insertUser" parameterType="com.example.entity.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO users(user_id, password, user_name, created_at) VALUES(#{userId}, #{password}, #{userName}, now())
+        INSERT INTO users(login_id, password, user_name, created_at) VALUES(#{loginId}, #{password}, #{userName}, now())
     </insert>
 
     <update id="updateRefreshToken">
         UPDATE users SET 
         	updated_at = now()
         	, refresh_token = #{refreshToken}
-        WHERE user_id = #{userId}
+        WHERE login_id = #{loginId}
     </update>
     
 	<insert id="insertUsers">
-	    INSERT INTO users (user_id, password, user_name, created_at)
+	    INSERT INTO users (login_id, password, user_name, created_at)
 	    VALUES
 	    <foreach collection="users" item="user" separator=",">
-	        (#{user.userId}, #{user.password}, #{user.userName}, now())
+	        (#{user.loginId}, #{user.password}, #{user.userName}, now())
 	    </foreach>
 	</insert>
 	
@@ -45,12 +45,12 @@
         	<if test="useYn != null and useYn != ''">
             	, use_yn = #{useYn}
         	</if>
-        WHERE user_id = #{userId}
+        WHERE login_id = #{loginId}
     </update>
     
 	<delete id="deleteUser" parameterType="com.example.entity.User">
         DELETE FROM users 
-        WHERE user_id = #{userId}
+        WHERE login_id = #{loginId}
     </delete>
 
 </mapper>
